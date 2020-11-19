@@ -1,0 +1,82 @@
+
+.flex-container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around
+
+}
+
+.flex-item {
+    position: relative;
+    display: inline-block;
+    flex-grow: unset;
+    margin: 0 5px 10px 5px;
+    width: 150px;
+    overflow: visible;
+    border: 1px solid transparent;
+    border-radius: 8px;
+
+    
+}
+.hidden {
+    position: absolute;
+    left: -100vw;
+
+}
+
+/* .genre {
+    background: #A5D6A7;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+}
+
+.genre:checked ~ .genre::after {
+    background: rgb(54, 153, 58);
+
+} */
+/* Base for label styling */
+[type="checkbox"]:not(:checked),
+[type="checkbox"]:checked {
+  position: absolute;
+  left: -9999px;
+}
+[type="checkbox"]:not(:checked) + label,
+[type="checkbox"]:checked + label {
+  position: relative;
+  padding-left: 1.95em;
+  cursor: pointer;
+}
+
+/* checkbox aspect */
+[type="checkbox"]:not(:checked) + label:before,
+[type="checkbox"]:checked + label:before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0;
+  width: 1.25em; height: 1.25em;
+  border: 2px solid rgb(214, 213, 213);
+  background: rgb(228, 224, 224);
+  border-radius: 4px;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,.1);
+}
+/* checked mark aspect */
+[type="checkbox"]:not(:checked) + label:after,
+[type="checkbox"]:checked + label:after {
+  content: '\2713\0020';
+  position: absolute;
+  top: .15em; left: .22em;
+  font-size: 1.3em;
+  line-height: 0.8;
+  color: #5e79f3;
+  transition: all .2s;
+  font-family: 'Lucida Sans Unicode', 'Arial Unicode MS', Arial;
+}
+/* checked mark aspect changes */
+[type="checkbox"]:not(:checked) + label:after {
+  opacity: 0;
+  transform: scale(0);
+}
+[type="checkbox"]:checked + label:after {
+  opacity: 1;
+  transform: scale(1);
+}
