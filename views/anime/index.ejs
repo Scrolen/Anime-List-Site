@@ -1,0 +1,25 @@
+
+<link rel="stylesheet" href="/animeIndex.css">
+<link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet"> 
+<% layout('layouts/boilerplate') %> 
+
+
+    <h1>All Animes</h1>
+    <a href="/anime/new">New Anime</a>
+    <div class="flex-container">
+    <% for(let anime of animes){ %>
+        <div class="flex-item">
+            <div class="flex-item-container">
+                <a href="/anime/<%= anime._id %>">
+                    <div class="img-container">
+                        <img src="<%= anime.img_url %> " alt="">
+                    </div>
+                    <div class="text-container">
+                        <%= anime.title %>
+                    </div>
+                </a>
+                </div>
+        </div>
+    <% } %> 
+    </div>
+

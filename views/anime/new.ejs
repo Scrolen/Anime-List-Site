@@ -1,0 +1,39 @@
+
+<link rel="stylesheet" href="/animeNew.css">
+<% layout('layouts/boilerplate') %> 
+<% var  genres = ['Action', 'Adventure','Cars','Cartoon','Comedy','Dementia','Demons','Drama','Dub','Ecchi','Fantasy'
+,'Game','Harem','Historical','Horror','Isekai','Josei','Kids','Magic','Martial Arts','Mecha','Military','Movie','Music',
+'Mystery','ONA','OVA','Parody','Police','Psychological','Romance','Samurai','School','Sci-Fi','Seinen','Shoujo','Shoujo Ai',
+'Slice of Life','Space','Special','Sports','Super Power','Supernatural','Thriller','Vampire','Yuri','Fill','Filler']; %> 
+
+    <form action="/anime" method="POST" novalidate class="form-validation">
+        <div>
+            <label class="form-label" for="title">Title</label>
+            <input class="form-control" type="text" name="anime[title]" id="title" required>
+        </div>
+        <div>
+                <label class="form-label" for="episodes">Number of Episodes</label>
+                <input class="form-control" type="number" name="anime[episodes]" id="episodes" required>
+        </div>
+        <div class="flex-container">
+                <% for(let i in genres) {%>
+
+                        <input value="<%= genres[i] %>" class="flex-item form-control" type="checkbox" name="anime[genre]" id="<%= genres[i] %>">
+                        <label class="flex-item form-label" for="<%= genres[i] %>"><%= genres[i] %></label>
+        
+                <% } %>  
+                
+        </div>
+        <div>
+            <label class="form-label" for="img_url">Img Url</label>
+            <input  class="form-control" type="text" name="anime[img_url]" id="img_url" required>
+        </div>
+        <div class="input-group">
+            <span class="input-group-text">With textarea</span>
+            <textarea  class="form-control" aria-label="Summary" name="anime[summary]" required></textarea>
+        </div>
+        <button>submit</button>
+    </form>
+
+
+    

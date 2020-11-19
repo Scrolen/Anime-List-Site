@@ -1,0 +1,38 @@
+<link rel="stylesheet" href="/animeDetails.css">
+<% layout('layouts/boilerplate') %> 
+    <h1><%= anime.title %> </h1>
+    <img style="float: left" src="<%= anime.img_url %> " alt="">
+    <p>Tags: <%= anime.genre %> </p>
+    <p>Summary: <%= anime.summary %> </p>
+    <p>Episodes: <%= anime.episodes  %> </p>
+    <a href="/anime">All Anime</a>
+    <a href="/anime/<%= anime._id %>/edit">Edit</a>
+    <p><form action="/anime/<%= anime._id %>?_method=DELETE" method="POST">
+        <button class="btn btn-danger">Delete</button>
+    </form>
+    </p>
+    <br>
+    <h2>Leave a Review</h2>
+    <form action="/anime/<%=anime._id%>/reviews" method="POST" class="mb-3 form-validation" novalidate>
+        <div>
+            <label class="form-label" for="rating">Rating</label>
+            <input class="form-range" type="range" name="review[rating]" id="rating" min="1" max="10">
+        </div>
+        <div class="mb-3">
+            <label class="form-label" for="body">Review</label>
+            <textarea class="form-control" name="review[comment]" id="body" cols="30" rows="4" required></textarea>
+        </div>
+        <button class="btn btn-success">Submit</button>
+    </form>
+
+    <% for (let review of anime.reviews) { %>
+        <div class="card mb-3">
+            <div class="card-body">
+                <p>Rating: <%= review.rating %></p>
+                <p>Review: <%= review.comment %></p>
+                <form action="/anime/<%= anime._id %>/reviews/<%= review._id %>?_method=DELETE" method="POST">
+                    <button class="btn btn-sm btn-danger">Delete</button>
+                </form>
+            </div> 
+        </div>
+    <% } %> 

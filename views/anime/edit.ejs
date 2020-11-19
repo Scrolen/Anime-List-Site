@@ -1,0 +1,46 @@
+<link rel="stylesheet" href="/animeNew.css">
+<% layout('layouts/boilerplate') %> 
+<% var  genres = ['Action', 'Adventure','Cars','Cartoon','Comedy','Dementia','Demons','Drama','Dub','Ecchi','Fantasy'
+,'Game','Harem','Historical','Horror','Isekai','Josei','Kids','Magic','Martial Arts','Mecha','Military','Movie','Music',
+'Mystery','ONA','OVA','Parody','Police','Psychological','Romance','Samurai','School','Sci-Fi','Seinen','Shoujo','Shoujo Ai',
+'Slice of Life','Space','Special','Sports','Super Power','Supernatural','Thriller','Vampire','Yuri','Fill','Filler']; %> 
+
+<% var animeGenres = anime.genre %>
+
+    <h1>Edit Anime</h1>
+    <form action="/anime/<%= anime._id %>/?_method=PUT" method="POST" novalidate class="form-validation">
+        <div>
+            <label  class="form-label" for="title">Title</label>
+            <input class="form-control" value="<%= anime.title %>" type="text" name="anime[title]" id="title" required>
+        </div>
+        <div>
+                <label class="form-label" for="episodes">Number of Episodes</label>
+                <input class="form-control" value="<%= anime.episodes %>" type="number" name="anime[episodes]" id="episodes" required>
+        </div>
+        <div class="flex-container">
+                <% for(let i in genres) {%>
+
+                    <% if (anime.genre.includes(genres[i])) {%>
+                        <input checked="true" value="<%= genres[i] %>" class="flex-item" type="checkbox"  name="anime[genre]" id="<%= genres[i] %>">
+                        <label class="flex-item" for="<%= genres[i] %>"><%= genres[i] %></label>
+                    <% } else{ %> 
+
+                        <input value="<%= genres[i] %>" class="flex-item" type="checkbox"  name="anime[genre]" id="<%= genres[i] %>">
+                        <label class="flex-item" for="<%= genres[i] %>"><%= genres[i] %></label>
+                    <% } %> 
+                <% } %>  
+                
+        </div>
+        <div>
+            <label class="form-label" for="img_url">Img Url</label>
+            <input class="form-control" value="<%= anime.img_url %>" type="text" name="anime[img_url]" id="img_url" required>
+            </div>
+            <div class="input-group">
+                <span class="input-group-text">With textarea</span>
+                <textarea class="form-control" aria-label="Summary" required name="anime[summary]"><%= anime.summary %> </textarea>
+            </div>
+        <button class="btn btn-success">Update</button>
+
+        <a href="/anime/<%= anime._id %>">Back to Anime</a>
+    </form>
+    
